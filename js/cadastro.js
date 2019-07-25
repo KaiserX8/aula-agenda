@@ -50,8 +50,8 @@ function ehNumero(numero) {
 
 function teste() {
     let tabela = document
-        .getElementById("lista-contatos");
-        .getElementById("tbody")
+        .getElementById("lista-contatos")
+        .getElementByTagName('tbody')[0];
 
     let ultimaLinha = tabela.rows.length;
 
@@ -72,8 +72,8 @@ function teste() {
     
 }
 
-function inserebotoesacoes() {
-    let botaoEditar = '<button class="btn btn-primary btn-sm">';
+function insereBotoesAcoes() {
+    let botaoEditar = '<button onclick="buscaContatoPeloId(' + id + ')" class="btn btn-primary btn-sm">';
     botaoEditar += '<i class="fas fa-pencil-alt"></i>';
     botaoEditar += '</button>';
 
@@ -82,4 +82,18 @@ function inserebotoesacoes() {
     botaoRemover += '</button>';
 
         return botaoEditar + botaoRemover;
+}
+
+function buscaContatoPeloId(id) {
+    let body = document
+        .getElementById('lista-contatos')
+        .getElementByTagName('tbody')[0];
+    let qtdLinhas = body.rows.length;
+    for (let i = 0; i < qtdLinhas; i++) {
+        if (body.rows[i].cells[1].innnerHTML == id) {
+            let inputNome = document.getElementById('nome');
+            inputNome.value = body.rows[i].cells[1].innnerHTML;
+            return;
+        }
+    }
 }
