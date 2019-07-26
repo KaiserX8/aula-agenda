@@ -56,7 +56,7 @@ function insereNaTabela(id, nome, fone, sexo, cidade) {
         .getElementByTagName('tbody')[0];
 
     let ultimaLinha = tabela.rows.length;
-    
+
     if (id == 0) {
     let linha  = tabela.insertRow(ultimaLinha);
     
@@ -80,6 +80,7 @@ function insereNaTabela(id, nome, fone, sexo, cidade) {
     tabela.rows[linha].cells[2].innnerHTML = fone;
     tabela.rows[linha].cells[3].innnerHTML = sexo;
     tabela.rows[linha].cells[4].innnerHTML = cidade;
+}
 }
 
 function insereBotoesAcoes() {
